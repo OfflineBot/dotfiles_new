@@ -1,9 +1,9 @@
 # back fill color
 set default-fg                  rgba(205,214,244,0.8)
-set default-bg                  rgba(15,15,30,0.8)
+set default-bg                  rgba(15,15,16,0.8)
 
 # main page color
-set recolor-lightcolor          rgba(30,30,46,1)
+set recolor-lightcolor          rgba(9,9,11,1)
 set recolor-darkcolor           rgba(205,214,244,1)
 
 
