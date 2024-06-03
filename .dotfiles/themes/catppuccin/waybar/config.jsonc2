@@ -1,0 +1,278 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "spacing": 4,
+  "exclusive": true,
+  "gtk-layer-shell": true,
+  "passthrough": false,
+  "fixed-center": true,
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-center": [],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "pulseaudio",
+    "clock",
+    "clock#simpleclock",
+    "tray",
+    "battery",
+    "network",
+    "custom/power"
+  ],
+
+
+    "battery": {
+        "format": "<span font='Font Awesome 5 Free 11'>{icon}</span> <span font-family='0xProto'> {capacity}%</span>",
+        "format-icons": ["", "", "", "", ""],
+        "format-time": "{H}h{M}m",
+        "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span> <span font-family='0xProto'> {capacity}%</span>",
+        "format-full": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  <span font-family='0xProto'>Charged</span>",
+        "interval": 30,
+        "states": {
+            "warning": 25,
+            "critical": 10
+        },
+        "tooltip": true,
+        "tooltip-format": "Time left: {time}, Capacity: {capacity}%",
+        "on-click": "3"
+    },
+    "network": {
+        "format-wifi": "<span font='Font Awesome 5 Free 9'></span>",
+        "format-ethernet": "{ifname} ",
+        "format-ethernet": "{ifname} ",
+        "format-disconnected": "",
+        "max-length": 50,
+        "tooltip": true,
+        "tooltip-format": "Connected: {essid} ({signalStrength}%)"
+        /*"on-click": "kitty -e 'nmtui'" */
+    },
+
+    
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "disable-markup": false,
+        "format": "<span font-family='0xProto'>{icon}</span>",
+        "format-icons": {
+            "1": "1 <span font='0xProto'> </span>",
+            "2": "2 <span font='0xProto'> </span>",
+            "3": "3 <span font='0xProto'> </span>",
+            "4": "4 <span font='0xProto'> </span>",
+            "5": "5 <span font='0xProto'> </span>",
+            "6": "6 <span font='0xProto'> </span>"
+        }
+    },
+    "sway/window": {
+        "max-length": 60,
+        "tooltip": false
+    },
+    "clock": {
+        "format": "<span font-family='0xProto'>{:%a %d %b - %H:%M}</span>",
+        "on-click": "gnome-calendar"
+    },
+    "hyprland/window": {
+        "format": "<span font-family='0xProto'>{}</span>",
+        "separate-outputs": true
+    },
+    "custom/cpu_speed": {
+        "interval": 10,
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/cpu_speed.sh",
+        "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  <span font-family='0xProto'>{}</span>",
+        "format-icons": [""],
+        "escape": true,
+        "on-click": "terminator -e htop"
+    },
+    "sway/language": {
+        "format": "<span font='Font Awesome 5 Free 9'>🏳️</span> {}",
+        "tooltip-format": "{long}",
+        "on-click": "swaymsg input 'type:keyboard' xkb_switch_layout next"
+    },
+    "custom/powermenu": {
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/powermenu.sh",
+        "format": "<span font='Font Awesome 5 Free 9'>{icon}</span>  {}",
+        "format-icons": [""],
+        "interval": 3600,
+        "escape": true,
+        "on-click": "~/sway/scripts/powermenu"
+    },
+    "custom/recorder": {
+		"format": "",
+		"return-type": "json",
+		"interval": 4,
+		"exec": "echo '{\"class\": \"recording\"}'",
+		"exec-if": "pgrep wf-recorder"
+	},
+   /* 
+    "network": {
+        "format": "{icon}",
+        "format-alt": "{ipaddr}/{cidr} {icon}",
+        "format-alt-click": "click-right",
+        "format-wifi": "<span font='Font Awesome 5 Free 10'></span>  {essid} ({signalStrength}%)",
+        "format-ethernet": " {ifname}",
+        "format-disconnected": "⚠ Disconnected",
+        "on-click": "terminator -e ~/sway/scripts/network-manager",
+        // "on-click": "gnome-control-center wifi",
+        "tooltip": true,
+        "tooltip-format": "Connected to {essid} ({signalStrength}%)"
+    },
+    */
+    "pulseaudio": {
+        "format": "<span font='Font Awesome 5 Free 11'>{icon:2}</span> <span font-family='0xProto'> {volume:4}% - {desc}</span>",
+        "format-bluetooth": "<span font='Font Awesome 5 Free 11'> {icon:2}</span> <span font-family='0xProto'>{volume:4}% - {desc}</span>",
+        "format-alt": "<span font='Font Awesome 5 Free 11'>{icon:2}</span> <span font-family='0xProto'> {volume:4}%</span>",
+        "format-alt-click": "click-right",
+        "format-muted": "<span font='Font Awesome 5 Free 11'></span>",
+        "format-icons": {
+            "headphone": [" ", " ", " ", " "],
+            "default": ["", "", "", ""]
+        },
+        "scroll-step": 2,
+        "on-click": "pavucontrol",
+        "tooltip": false
+    },
+    "custom/storage": {
+        "format": "{} ",
+        "format-alt": "{percentage}% ",
+        "format-alt-click": "click-right",
+        "return-type": "json",
+        "interval": 60,
+        "exec": "~/.config/waybar/modules/storage.sh"
+    },
+    "backlight": {
+        "format": "{icon}",
+        "format-alt": "{percent}% {icon}",
+        "format-alt-click": "click-right",
+        "format-icons": ["", ""],
+        "on-scroll-down": "light -A 1",
+        "on-scroll-up": "light -U 1"
+    },
+    "temperature": {
+        "format": "<span font='Font Awesome 5 Free 9'></span> {temperatureC:3}°C",
+        "hwmon-path": "/sys/class/thermal/thermal_zone11/temp",
+        // "hwmon-path": "/sys/class/hwmon/hwmon7/temp1_input",
+        // "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input",
+        "on-click": "terminator -e 'watch -n1 sensors'"
+    },
+    "custom/temperature": {
+        // "return-type": "json",
+        "exec": "sensors -j|jq '.\"coretemp-isa-0000\".\"Package id 0\".temp1_input'",
+        "format": "<span font='Font Awesome 5 Free 9'>{icon}</span>  {}",
+        "format-icons": ["🌡"],
+        "interval": 5,
+        "on-click": "terminator -e 'watch -n1 sensors'"
+    },
+    "custom/weather": {
+        "format": "{}",
+        "format-alt": "{alt}: {}",
+        "format-alt-click": "click-right",
+        "interval": 1800,
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/weather.sh",
+        "exec-if": "ping wttr.in -c1",
+        // "on-click": "terminator -p Small -e 'bash -c \"curl -s https://en.wttr.in; read line\"'"
+        "on-click": "gnome-weather"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-alt": "{icon} idle {status}",
+        "format-alt-click": "click-right",
+        "format-icons": {
+            "activated": "<span font='Font Awesome 5 Free 9'></span>",
+            "deactivated": "<span font='Font Awesome 5 Free 9'></span>"
+        },
+        "tooltip": false
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 18
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 14,
+        "icon-theme": "Flat-Remix-Violet-Dark",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close"
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": " {} {icon} ",
+        "format-icons": {
+          "notification": "<span foreground='red'><sup></sup></span>",
+          "none": "",
+          "dnd-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-none": "",
+          "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "inhibited-none": "",
+          "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+      },
+    "custom/spotify": {
+    "format": "{}",
+    "return-type": "json",
+    "on-click": "playerctl -p spotify play-pause",
+    "on-click-right": "spotifatius toggle-liked",
+    "on-click-middle": "playerctl -p spotify next",
+    "exec": "spotifatius monitor"
+  },
+  "wlr/workspaces": {
+    "on-click": "activate",
+    "format": "<span font='0xProto'>{name}</span>",
+    "all-outputs": true,
+    "disable-scroll": false,
+    "active-only": false
+  },
+  "tray": {
+    "show-passive-items": true,
+    "spacing": 10
+  },
+  "clock#simpleclock": {
+    "tooltip": false,
+    "format": " <span font-family='0xProto'> {:%H:%M}</span>"
+  },
+  "clock": {
+    "format": "  <span font-family='0xProto'> {:L%a %d %b}</span>",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "cpu": {
+    "format": "  <span font-family='0xProto'>{usage}%</span>",
+    "tooltip": true,
+    "interval": 1
+  },
+  "memory": {
+    "format": "<span font='Font Awesome 5 Free 9'></span> <span font-family='0xProto'> {used:0.2f}G</span>"
+  },
+  "pulseaudio": {
+    "format": "<span font='Font Awesome 5 Free 9'>{icon}</span> <span font-family='0xProto'>{volume}%</span>",
+    "format-muted": "<span font='Font Awesome 5 Free 9'></span> <span font-family='0xProto'> muted</span>",
+    "format-icons": {
+      "headphone": " ",
+      "hands-free": "󰂑",
+      "headset": "󰂑",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [" ", " ", " "]
+    },
+    "on-click": "pavucontrol"
+  },
+    "custom/sep": {
+    "format": "|",
+    "tooltip": false
+  },
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "wlogout -p layer-shell &",
+    "format": "⏻"
+  }
+}
