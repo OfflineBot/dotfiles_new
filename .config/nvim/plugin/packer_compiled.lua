@@ -134,6 +134,11 @@ _G.packer_plugins = {
     path = "/home/offlinebot/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "/home/offlinebot/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
+  },
   nerdcommenter = {
     loaded = true,
     path = "/home/offlinebot/.local/share/nvim/site/pack/packer/start/nerdcommenter",

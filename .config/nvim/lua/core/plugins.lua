@@ -17,6 +17,7 @@ return require('packer').startup(function(use)
   -- My plugins here
 
   -- core
+  use 'williamboman/mason.nvim'
   use 'folke/which-key.nvim'
   use {
     'nvim-treesitter/nvim-treesitter', 
