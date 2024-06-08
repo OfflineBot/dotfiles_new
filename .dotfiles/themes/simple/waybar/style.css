@@ -1,5 +1,6 @@
-@define-color mainbg #1E1E23;
+@define-color mainbg rgba(30, 30, 30, 0.7);
 @define-color panel-color #181818;
+
 /*@import url("./colors.css");*/
 
 * {
@@ -11,13 +12,15 @@
     font-weight: 500;
 }
 
+
 window#waybar {
     transition-property: background-color;
     transition-duration: 0.5s;
     /* background-color: #1e1e2e; */
     /* background-color: #181825; */
-    background-color: rgba(30, 30, 35, 0.0);
-
+    background-color: @mainbg;
+    border: 1px solid #888888;
+    border-radius: 5px;
 }
 
 window#waybar.hidden {
@@ -52,8 +55,8 @@ window#waybar.hidden {
 
 #workspaces button.active {
     font-family: "0xProto";
-    color: #1e1e2e;
-    background-color: #89b4fa;
+    color: #1e1e1e;
+    background-color: #cccccc;
 }
 
 #workspaces button.urgent {
@@ -76,7 +79,7 @@ window#waybar.hidden {
     padding: 2px 10px;
     border-radius: 8px;
     margin: 4px 4px;
-    background-color: @mainbg;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 #custom-sep {
@@ -124,7 +127,7 @@ window#waybar.empty #window {
 }
 /* custom bar */
 #window {
-    color: #a1c7e3;
+    color: #cccccc;
 }
 
 #pulseaudio {
@@ -155,3 +158,5 @@ window#waybar.empty #window {
 tooltip {
     border-radius: 8px;
 }
+
+

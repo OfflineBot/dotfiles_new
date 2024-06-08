@@ -30,7 +30,7 @@ inside-caps-lock-color=00000000
 inside-ver-color=00000000
 inside-wrong-color=00000000
 
-key-hl-color=fc3e38
+key-hl-color=0af2fb
 
 layout-bg-color=00000000
 layout-border-color=00000000
@@ -42,7 +42,7 @@ line-caps-lock-color=00000000
 line-ver-color=00000000
 line-wrong-color=00000000
 
-ring-color=29292b
+ring-color=e925f5
 ring-clear-color=f5e0dc
 ring-caps-lock-color=fab387
 ring-ver-color=fc9a38

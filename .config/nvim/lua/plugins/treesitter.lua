@@ -3,6 +3,7 @@ require('nvim-treesitter.configs').setup {
         'python',
         'comment',
         'lua',
+        'rust'
         --'typescript',
         --'javascript',
     },
@@ -12,3 +13,4 @@ require('nvim-treesitter.configs').setup {
         additional_vim_regex_highlighting = false,
     },
 }
+
